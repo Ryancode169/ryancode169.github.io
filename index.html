@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+</head>
+
+<body>
+
+    <h1>Ryancode69</h1>
+
+    <h2>檢測螢幕更新率</h2>
+    <div>
+        更新率: <span id="refreshRate"></span> Hz
+    </div>
+
+    <script>
+        const rfr = document.getElementById("refreshRate");
+        let count = 0;
+        let start = null;
+        function fps(timestamp) {
+            if (!start) start = timestamp;
+            if (timestamp - start >= 1000) {
+                rfr.innerHTML = count;
+                console.log("fps", count);
+                return;
+            }
+            count += 1;
+            requestAnimationFrame(fps);
+        }
+        requestAnimationFrame(fps);
+    </script>
+</body>
+
+</html>
